@@ -9,10 +9,11 @@
     $objDb = new db();
     $link = $objDb->conecta_mysql();
 
-    $sql = " insert into usuarios(usuario, email, senha) values ('$usuario', ' $email', ' $senha') ";
+
+    $con = " insert into usuarios(usuario, email, senha) values ('$usuario', '$email', '$senha') ";
 
     //executar a query
-   if (mysqli_query($link, $sql)){
+   if ($result = mysqli_query($link, $con)){
     echo 'Usuário registrado com sucesso!';
    } else {
     echo 'Erro ao registrar o usuário!';
