@@ -32,7 +32,7 @@ if($resultado_id){
     }
 
 } else {
-    echo 'Erro na execução da consulta, favor entrar em contato com o admin do site';
+    echo 'Erro na execução da consulta, favor entrar em contato com o admin do site ';
 }
 
 
