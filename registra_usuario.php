@@ -9,6 +9,9 @@
     $objDb = new db();
     $link = $objDb->conecta_mysql();
 
+    $usuario_existe = false;
+    $email_existe = false;
+
     //Verificar se o usuário já existe.
     //essa etapa precisa ser realizada somente após o $objDb e a coneção do banco, conecta_mysql()
     $sql = "select * from usuarios where usuario = '$usuario' ";
@@ -16,13 +19,10 @@
 
       $dados_usuario =  mysqli_fetch_array($resultado_id);
 
-      if(isset($dados_usuario['usuario'])){
-        echo 'Usuário já cadastrado';
-      } else {
-        echo 'Usuário não cadastrado, ok, pode cadastrar <br /><br />';
-      }
-
-    } else {
+        if(isset($dados_usuario['usuario'])){
+            $usuario_existe = true;
+        }
+    }  else {
         echo 'Erro ao tentar localizar o registro do usuário <br /><br />';
     }
 
@@ -33,20 +33,30 @@
 
       $dados_usuario =  mysqli_fetch_array($resultado_id);
 
-      if(isset($dados_usuario['email'])){
-        echo 'E-mail já cadastrado';
-      } else {
-        echo 'E-mail não cadastrado, ok, pode cadastrar <br /><br />';
-      }
-
-    } else {
+        if(isset($dados_usuario['email'])){
+        $email_existe = true;
+      } 
+    }   else {
         echo 'Erro ao tentar localizar o registro do E-mail <br /><br />';
     }
 
+    if($usuario_existe || $email_existe) {
 
-    
+        $retorno_get = '';
 
-    die();
+        if($usuario_existe){
+            $retorno_get.= "erro_usuario=1&";
+        }
+        if($email_existe){
+            $retorno_get.="erro_email=1&";
+        }
+
+
+        header('Location: inscrevase.php?'.$retorno_get);
+        die();
+    }
+       
+
     $sql = " insert into usuarios(usuario, email, senha) values ('$usuario', '$email', '$senha') ";
 
     //executar a query
