@@ -22,8 +22,12 @@ if($resultado_id) {
     
     while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
         echo '<a href="#" class="list-group-item">';
-        echo '<strong>'.$registro['usuario'].'</strong> <small> - '.$registro['email'].' </small';
-        echo '</ a>';
+        echo '<strong>'.$registro['usuario'].'</strong> <medium> - '.$registro['email'].' </medium';
+        echo '<p class="list-group-item-text">';
+        echo '<button type="button" class="btn btn-default pull-right"> Seguir </button>';
+        echo '</p>';
+        echo '<div class="charfix"></div>';
+        echo '</a>';
     }
 
 } else {
