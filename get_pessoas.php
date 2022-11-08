@@ -24,8 +24,8 @@ if($resultado_id) {
         echo '<a href="#" class="list-group-item">';
         echo '<strong>'.$registro['usuario'].'</strong> <medium> - '.$registro['email'].' </medium';
         echo '<p class="list-group-item-text">';
-        echo '<button type="button"  class="btn btn-primary btn_deixar_seguir pull-right" data-id_usuario="'.$registro['id'].'"> Deixar de Seguir </button>';
-        echo '<button type="button"  class="btn btn-default btn_seguir pull-right" data-id_usuario="'.$registro['id'].'"> Seguir </button>';
+        echo '<button type="button" id="btn_deixar_seguir_'.$registro['id'].'" style="display:none" class="btn btn-primary btn_deixar_seguir pull-right" data-id_usuario="'.$registro['id'].'"> Deixar de Seguir </button>';
+        echo '<button type="button" id="btn_seguir_'.$registro['id'].'" class="btn btn-default btn_seguir pull-right" data-id_usuario="'.$registro['id'].'"> Seguir </button>';
 
         echo '</p>';
         echo '<div class="charfix"></div>';
